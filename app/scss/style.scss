@@ -700,7 +700,7 @@ a {
         left: 0;
         width: 100%;
         box-shadow: 1px 1px 5px 0px rgb(0 0 0 / 30%);
-        z-/: 999;
+        z-index: 999;
         background: $color-1;
         border: none;
         opacity: 0;
@@ -810,7 +810,7 @@ a {
     line-height: 50px;
     border-radius: 4px;
     text-align: center;
-    z-/: 999;
+    z-index: 999;
     right: 20px;
     bottom: 40px;
     opacity: 0;
@@ -836,7 +836,7 @@ a {
     }
 
     &::before {
-        z-/: -1;
+        z-index: -1;
         background-color: $color-3;
     }
 
@@ -870,7 +870,7 @@ a {
     bottom: 0;
     right: 0;
     left: 0;
-    z-/: 99999999999;
+    z-index: 99999999999;
     display: block;
     
 }
@@ -893,7 +893,7 @@ a {
     top: 0;
     left: 0;
     border-radius: 3px;
-    z-/: 9999999999;
+    z-index: 9999999999;
   }
   @keyframes animate {
     17% { border-bottom-right-radius: 3px; }
@@ -1021,7 +1021,7 @@ a {
     border-radius: 4px;
     color                : #fff;
     @include transition3;
-    z-/              : 10;
+    z-index              : 10;
     &::after {
         font-family      : 'Font Awesome 5 Pro';
         font-size        : 10px;
@@ -1068,7 +1068,7 @@ a {
     }
     .country {
         position: absolute;
-        z-/: 99;
+        z-index: 99;
         margin-left: 13px;
         margin-top: 5px;
         color: #818089;

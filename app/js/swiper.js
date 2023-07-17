@@ -17,8 +17,8 @@ var swiper =  new Swiper(".mainslider", {
         el: ".swiper-pagination2",
         clickable: true,
 
-        renderBullet: function (/, className) {
-            return '<span class="' + className + '">0' + (/ + 1) + '</span>';
+        renderBullet: function (index, className) {
+            return '<span class="' + className + '">0' + (index + 1) + '</span>';
           },
       
     },

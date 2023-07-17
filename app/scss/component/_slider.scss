@@ -23,7 +23,7 @@
     height: 50px;
     border-radius: 5px; 
     top  : 24px;
-    z-/: 99;
+    z-index: 99;
     opacity: 1;
     @include transition3;
     background: $color-1;
@@ -81,7 +81,7 @@
     border-radius: 50%; 
     top  : 14px;
     position: absolute;
-    z-/: 99;
+    z-index: 99;
     opacity: 1;
     @include transition3;
     background: $color-1;
@@ -118,7 +118,7 @@
     border-radius: 50%; 
     top  : 45.7%;
     position: absolute;
-    z-/: 99;
+    z-index: 99;
     opacity: 0;
     @include transition3;
     background: $color-1;
@@ -178,7 +178,7 @@
     font-weight: 500;
     position: absolute;
     bottom: 43px;
-    z-/: 99;
+    z-index: 99;
     color: #fff;
     text-transform:uppercase;
     &:hover {
@@ -344,7 +344,7 @@
                     top: -165px;
                     margin-left: 90px;
                     width: 100%;
-                    z-/: -1;
+                    z-index: -1;
                 }
             }
             
@@ -449,7 +449,7 @@
         text-align: unset;
         left: 16%;
         bottom: 12%;
-        z-/: 2;
+        z-index: 2;
     }
     .swiper-pagination-bullet {
         background: $color-8;
@@ -481,7 +481,7 @@
 .pagi {
     .swiper-pagination {
         position: relative;
-        z-/: 2;
+        z-index: 2;
         margin-top: 35px;
     }
     .swiper-pagination-bullet {
@@ -515,7 +515,7 @@
 .pagi2 {
     .swiper-pagination2 {
         position: relative;
-        z-/: 2;
+        z-index: 2;
         margin-top: 62px;
     }
     .swiper-pagination-bullet {
@@ -565,7 +565,7 @@
     }
     .swiper-pagination3 {
         position: relative;
-        z-/: 2;   
+        z-index: 2;   
     }
     .swiper-pagination-bullet {
         // background: $color-8;

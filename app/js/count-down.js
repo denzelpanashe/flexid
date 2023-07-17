@@ -95,9 +95,9 @@ Util.setAttributes = function (el, attrs) {
         }
 
         // hide days/hours/mins if not available
-        if (bool && days == 0 && this.visibleLabels./Of('d') < 0) this.days.parentElement.style.display = "none";
-        if (bool && days == 0 && hours == 0 && this.visibleLabels./Of('h') < 0) this.hours.parentElement.style.display = "none";
-        if (bool && days == 0 && hours == 0 && mins == 0 && this.visibleLabels./Of('m') < 0) this.mins.parentElement.style.display = "none";
+        if (bool && days == 0 && this.visibleLabels.indexOf('d') < 0) this.days.parentElement.style.display = "none";
+        if (bool && days == 0 && hours == 0 && this.visibleLabels.indexOf('h') < 0) this.hours.parentElement.style.display = "none";
+        if (bool && days == 0 && hours == 0 && mins == 0 && this.visibleLabels.indexOf('m') < 0) this.mins.parentElement.style.display = "none";
 
         this.days.textContent = days;
         this.hours.textContent = this.getTimeFormat(hours);

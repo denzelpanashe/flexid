@@ -170,11 +170,11 @@
 
         // Base template for layout
         baseTpl	:
-            '<div class="fancybox-container" role="dialog" tab/="-1">' +
+            '<div class="fancybox-container" role="dialog" tabindex="-1">' +
                 '<div class="fancybox-bg"></div>' +
                 '<div class="fancybox-inner">' +
                     '<div class="fancybox-infobar">' +
-                        '<span data-fancybox-/></span>&nbsp;/&nbsp;<span data-fancybox-count></span>' +
+                        '<span data-fancybox-index></span>&nbsp;/&nbsp;<span data-fancybox-count></span>' +
                     '</div>' +
                     '<div class="fancybox-toolbar">{{buttons}}</div>' +
                     '<div class="fancybox-navigation">{{arrows}}</div>' +
@@ -472,10 +472,10 @@
     // Class definition
     // ================
 
-    var FancyBox = function( content, opts, / ) {
+    var FancyBox = function( content, opts, index ) {
         var self = this;
 
-        self.opts = $.extend( true, { / : / }, $.fancybox.defaults, opts || {} );
+        self.opts = $.extend( true, { index : index }, $.fancybox.defaults, opts || {} );
 
         if ( $.fancybox.isMobile ) {
             self.opts = $.extend( true, {}, self.opts, self.opts.mobile );
@@ -489,8 +489,8 @@
         self.id    = self.opts.id || ++called;
         self.group = [];
 
-        self.curr/ = parseInt( self.opts./, 10 ) || 0;
-        self.prev/ = null;
+        self.currIndex = parseInt( self.opts.index, 10 ) || 0;
+        self.prevIndex = null;
 
         self.prevPos = null;
         self.currPos = 0;
@@ -520,7 +520,7 @@
 
         init : function() {
             var self = this,
-                firstItem      = self.group[ self.curr/ ],
+                firstItem      = self.group[ self.currIndex ],
                 firstItemOpts  = firstItem.opts,
                 scrollbarWidth = $.fancybox.scrollbarWidth,
                 $scrollDiv,
@@ -571,7 +571,7 @@
             // Build html code for buttons and insert into main template
             buttonStr = '';
 
-            $.each( firstItemOpts.buttons, function( /, value ) {
+            $.each( firstItemOpts.buttons, function( index, value ) {
                 buttonStr += ( firstItemOpts.btnTpl[ value ] || '' );
             });
 
@@ -605,7 +605,7 @@
             self.activate();
 
             // Build slides, load and reveal content
-            self.jumpTo( self.curr/ );
+            self.jumpTo( self.currIndex );
         },
 
 
@@ -732,7 +732,7 @@
                 // Step 3 - Some adjustments
                 // =========================
 
-                obj./ = self.group.length;
+                obj.index = self.group.length;
 
                 // Check if $orig and $thumb objects exist
                 if ( obj.opts.$orig && !obj.opts.$orig.length ) {
@@ -958,7 +958,7 @@
 
 
             // Hide controls after some inactivity period
-            if ( self.group[ self.curr/ ].opts.idleTime ) {
+            if ( self.group[ self.currIndex ].opts.idleTime ) {
                 self.idleSecondsCounter = 0;
 
                 $D.on('mousemove.fb-idle mouseleave.fb-idle mousedown.fb-idle touchstart.fb-idle touchmove.fb-idle scroll.fb-idle keydown.fb-idle', function(e) {
@@ -974,7 +974,7 @@
                 self.idleInterval = window.setInterval(function() {
                     self.idleSecondsCounter++;
 
-                    if ( self.idleSecondsCounter >= self.group[ self.curr/ ].opts.idleTime && !self.isDragging ) {
+                    if ( self.idleSecondsCounter >= self.group[ self.currIndex ].opts.idleTime && !self.isDragging ) {
                         self.isIdle = true;
                         self.idleSecondsCounter = 0;
 
@@ -1056,24 +1056,24 @@
 
             previous = self.current;
 
-            self.prev/ = self.curr/;
+            self.prevIndex = self.currIndex;
             self.prevPos   = self.currPos;
 
             // Create slides
             current = self.createSlide( pos );
 
             if ( groupLen > 1 ) {
-                if ( loop || current./ > 0 ) {
+                if ( loop || current.index > 0 ) {
                     self.createSlide( pos - 1 );
                 }
 
-                if ( loop || current./ < groupLen - 1 ) {
+                if ( loop || current.index < groupLen - 1 ) {
                     self.createSlide( pos + 1 );
                 }
             }
 
             self.current   = current;
-            self.curr/ = current./;
+            self.currIndex = current.index;
             self.currPos   = current.pos;
 
             self.trigger( 'beforeShow', firstRun );
@@ -1117,7 +1117,7 @@
             }
 
             // Clean up
-            $.each(self.slides, function( /, slide ) {
+            $.each(self.slides, function( index, slide ) {
                 $.fancybox.stop( slide.$slide );
             });
 
@@ -1128,7 +1128,7 @@
             if ( current.isMoved ) {
                 canvasWidth = Math.round( current.$slide.width() );
 
-                $.each(self.slides, function( /, slide ) {
+                $.each(self.slides, function( index, slide ) {
                     var pos = slide.pos - current.pos;
 
                     $.fancybox.animate( slide.$slide, {
@@ -1203,15 +1203,15 @@
 
             var self = this;
             var $slide;
-            var /;
+            var index;
 
-            / = pos % self.group.length;
-            / = / < 0 ? self.group.length + / : /;
+            index = pos % self.group.length;
+            index = index < 0 ? self.group.length + index : index;
 
-            if ( !self.slides[ pos ] && self.group[ / ] ) {
+            if ( !self.slides[ pos ] && self.group[ index ] ) {
                 $slide = $('<div class="fancybox-slide"></div>').appendTo( self.$refs.stage );
 
-                self.slides[ pos ] = $.extend( true, {}, self.group[ / ], {
+                self.slides[ pos ] = $.extend( true, {}, self.group[ index ], {
                     pos      : pos,
                     $slide   : $slide,
                     isLoaded : false,
@@ -2412,7 +2412,7 @@
                 $el = current.$slide.find('input[autofocus]:enabled:visible:first');
 
                 if ( !$el.length ) {
-                    $el = current.$slide.find('button,:input,[tab/],a').filter(':enabled:visible:first');
+                    $el = current.$slide.find('button,:input,[tabindex],a').filter(':enabled:visible:first');
                 }
             }
 
@@ -2668,7 +2668,7 @@
             var self = this;
 
             var current  = self.current,
-                /    = current./,
+                index    = current.index,
                 caption  = current.opts.caption,
                 $container = self.$refs.container,
                 $caption   = self.$refs.caption;
@@ -2684,10 +2684,10 @@
 
             // Update info and navigation elements
             $container.find('[data-fancybox-count]').html( self.group.length );
-            $container.find('[data-fancybox-/]').html( / + 1 );
+            $container.find('[data-fancybox-index]').html( index + 1 );
 
-            $container.find('[data-fancybox-prev]').prop( 'disabled', ( !current.opts.loop && / <= 0 ) );
-            $container.find('[data-fancybox-next]').prop( 'disabled', ( !current.opts.loop && / >= self.group.length - 1 ) );
+            $container.find('[data-fancybox-prev]').prop( 'disabled', ( !current.opts.loop && index <= 0 ) );
+            $container.find('[data-fancybox-next]').prop( 'disabled', ( !current.opts.loop && index >= self.group.length - 1 ) );
 
             if ( current.type === 'image' ) {
 
@@ -2765,7 +2765,7 @@
         //   $.fancybox.getInstance().jumpTo( 1 );
         //   $.fancybox.getInstance( 'jumpTo', 1 );
         //   $.fancybox.getInstance( function() {
-        //       console.info( this.curr/ );
+        //       console.info( this.currIndex );
         //   });
         // ======================================================
 
@@ -2793,8 +2793,8 @@
         // Create new instance
         // ===================
 
-        open : function ( items, opts, / ) {
-            return new FancyBox( items, opts, / );
+        open : function ( items, opts, index ) {
+            return new FancyBox( items, opts, index );
         },
 
 
@@ -2856,7 +2856,7 @@
 
             matrix  = $el.eq( 0 ).css('transform');
 
-            if ( matrix && matrix./Of( 'matrix' ) !== -1 ) {
+            if ( matrix && matrix.indexOf( 'matrix' ) !== -1 ) {
                 matrix = matrix.split('(')[1];
                 matrix = matrix.split(')')[0];
                 matrix = matrix.split(',');
@@ -2963,8 +2963,8 @@
 
             $el.on( transitionEnd, function(e) {
 
-                // Skip events from child elements and z-/ change
-                if ( e && e.originalEvent && ( !$el.is( e.originalEvent.target ) || e.originalEvent.propertyName == 'z-/' ) ) {
+                // Skip events from child elements and z-index change
+                if ( e && e.originalEvent && ( !$el.is( e.originalEvent.target ) || e.originalEvent.propertyName == 'z-index' ) ) {
                     return;
                 }
 
@@ -3040,7 +3040,7 @@
         var $target	= $( e.currentTarget ),
             opts	= e.data ? e.data.options : {},
             value	= $target.attr( 'data-fancybox' ) || '',
-            /	= 0,
+            index	= 0,
             items   = [];
 
         // Avoid opening multiple times
@@ -3050,24 +3050,24 @@
 
         e.preventDefault();
 
-        // Get all related items and find / for clicked one
+        // Get all related items and find index for clicked one
         if ( value ) {
             items = opts.selector ? $( opts.selector ) : ( e.data ? e.data.items : [] );
             items = items.length ? items.filter( '[data-fancybox="' + value + '"]' ) : $( '[data-fancybox="' + value + '"]' );
 
-            / = items./( $target );
+            index = items.index( $target );
 
             // Sometimes current item can not be found
             // (for example, when slider clones items)
-            if ( / < 0 ) {
-                / = 0;
+            if ( index < 0 ) {
+                index = 0;
             }
 
         } else {
             items = [ $target ];
         }
 
-        $.fancybox.open( items, opts, / );
+        $.fancybox.open( items, opts, index );
     }
 
 
@@ -3134,7 +3134,7 @@
 		});
 
 		if (params.length) {
-			url += (url./Of('?') > 0 ? '&' : '?') + params;
+			url += (url.indexOf('?') > 0 ? '&' : '?') + params;
 		}
 
 		return url;
@@ -3213,7 +3213,7 @@
 			matcher : /(maps\.)?google\.([a-z]{2,3}(\.[a-z]{2})?)\/(((maps\/(place\/(.*)\/)?\@(.*),(\d+.?\d+?)z))|(\?ll=))(.*)?/i,
 			type    : 'iframe',
 			url     : function (rez) {
-				return '//maps.google.' + rez[2] + '/?ll=' + ( rez[9] ? rez[9] + '&z=' + Math.floor(  rez[10]  ) + ( rez[12] ? rez[12].replace(/^\//, "&") : '' )  : rez[12] ) + '&output=' + ( rez[12] && rez[12]./Of('layer=c') > 0 ? 'svembed' : 'embed' );
+				return '//maps.google.' + rez[2] + '/?ll=' + ( rez[9] ? rez[9] + '&z=' + Math.floor(  rez[10]  ) + ( rez[12] ? rez[12].replace(/^\//, "&") : '' )  : rez[12] ) + '&output=' + ( rez[12] && rez[12].indexOf('layer=c') > 0 ? 'svembed' : 'embed' );
 			}
 		},
 
@@ -3656,7 +3656,7 @@
 				// Reset points to avoid jumping, because we dropped first swipes to calculate the angle
 				self.startPoints = self.newPoints;
 
-				$.each(self.instance.slides, function( /, slide ) {
+				$.each(self.instance.slides, function( index, slide ) {
 					$.fancybox.stop( slide.$slide );
 
 					slide.$slide.css( 'transition-duration', '' );
@@ -3679,10 +3679,10 @@
 
 		// Sticky edges
 		if ( swiping == 'x' ) {
-			if ( self.distanceX > 0 && ( self.instance.group.length < 2 || ( self.instance.current./ === 0 && !self.instance.current.opts.loop ) ) ) {
+			if ( self.distanceX > 0 && ( self.instance.group.length < 2 || ( self.instance.current.index === 0 && !self.instance.current.opts.loop ) ) ) {
 				left = left + Math.pow( self.distanceX, 0.8 );
 
-			} else if ( self.distanceX < 0 && ( self.instance.group.length < 2 || ( self.instance.current./ === self.instance.group.length - 1 && !self.instance.current.opts.loop ) ) ) {
+			} else if ( self.distanceX < 0 && ( self.instance.group.length < 2 || ( self.instance.current.index === self.instance.group.length - 1 && !self.instance.current.opts.loop ) ) ) {
 				left = left - Math.pow( -self.distanceX, 0.8 );
 
 			} else {
@@ -3704,7 +3704,7 @@
 		self.requestId = requestAFrame(function() {
 
 			if ( self.sliderLastPos ) {
-				$.each(self.instance.slides, function( /, slide ) {
+				$.each(self.instance.slides, function( index, slide ) {
 					var pos = slide.pos - self.instance.currPos;
 
 					$.fancybox.setTranslate( slide.$slide, {
@@ -4002,7 +4002,7 @@
 			if ( scrolling || len < 2 ) {
 				self.instance.centerSlide( self.instance.current, 150 );
 			} else {
-				self.instance.jumpTo( self.instance.current./ );
+				self.instance.jumpTo( self.instance.current.index );
 			}
 		}
 
@@ -4283,7 +4283,7 @@
 				self.toggle();
 			});
 
-			if ( self.instance.group.length < 2 || !self.instance.group[ self.instance.curr/ ].opts.slideShow ) {
+			if ( self.instance.group.length < 2 || !self.instance.group[ self.instance.currIndex ].opts.slideShow ) {
 				self.$button.hide();
 			}
 		},
@@ -4292,10 +4292,10 @@
 			var self = this;
 
 			// Check if reached last element
-			if ( self.instance && self.instance.current && (force === true || self.instance.current.opts.loop || self.instance.curr/ < self.instance.group.length - 1 )) {
+			if ( self.instance && self.instance.current && (force === true || self.instance.current.opts.loop || self.instance.currIndex < self.instance.group.length - 1 )) {
 				self.timer = setTimeout(function() {
 					if ( self.isActive ) {
-						self.instance.jumpTo( (self.instance.curr/ + 1) % self.instance.group.length );
+						self.instance.jumpTo( (self.instance.currIndex + 1) % self.instance.group.length );
 					}
 
 				}, self.instance.current.opts.slideShow.speed);
@@ -4568,7 +4568,7 @@
 		'onInit.fb' : function(e, instance) {
 			var $container;
 
-			if ( instance && instance.group[ instance.curr/ ].opts.fullScreen ) {
+			if ( instance && instance.group[ instance.currIndex ].opts.fullScreen ) {
 				$container = instance.$refs.container;
 
 				$container.on('click.fb-fullscreen', '[data-fancybox-fullscreen]', function(e) {
@@ -4685,7 +4685,7 @@
 			var first  = instance.group[0],
 				second = instance.group[1];
 
-			self.opts = instance.group[ instance.curr/ ].opts.thumbs;
+			self.opts = instance.group[ instance.currIndex ].opts.thumbs;
 
 			self.$button = instance.$refs.toolbar.find( '[data-fancybox-thumbs]' );
 
@@ -4725,14 +4725,14 @@
 				}
 
 				if ( src && src.length ) {
-					list += '<li data-/="' + i + '"  tab/="0" class="fancybox-thumbs-loading"><img data-src="' + src + '" /></li>';
+					list += '<li data-index="' + i + '"  tabindex="0" class="fancybox-thumbs-loading"><img data-src="' + src + '" /></li>';
 				}
 			});
 
 			list += '</ul>';
 
 			self.$list = $( list ).appendTo( self.$grid ).on('click', 'li', function() {
-				instance.jumpTo( $(this).data('/') );
+				instance.jumpTo( $(this).data('index') );
 			});
 
 			self.$list.find( 'img' ).hide().one('load', function() {
@@ -4788,7 +4788,7 @@
 			if ( self.instance.current ) {
 				thumb = $list.children()
 					.removeClass( 'fancybox-thumbs-active' )
-					.filter('[data-/="' + self.instance.current./  + '"]')
+					.filter('[data-index="' + self.instance.current.index  + '"]')
 					.addClass('fancybox-thumbs-active');
 
 				thumbPos = thumb.position();
@@ -5022,21 +5022,21 @@
 	// Throttling the history change
 	var timerID = null;
 
-	// Get info about gallery name and current / from url
+	// Get info about gallery name and current index from url
     function parseUrl() {
         var hash    = window.location.hash.substr( 1 );
         var rez     = hash.split( '-' );
-        var /   = rez.length > 1 && /^\+?\d+$/.test( rez[ rez.length - 1 ] ) ? parseInt( rez.pop( -1 ), 10 ) || 1 : 1;
+        var index   = rez.length > 1 && /^\+?\d+$/.test( rez[ rez.length - 1 ] ) ? parseInt( rez.pop( -1 ), 10 ) || 1 : 1;
         var gallery = rez.join( '-' );
 
-		// / is starting from 1
-		if ( / < 1 ) {
-			/ = 1;
+		// Index is starting from 1
+		if ( index < 1 ) {
+			index = 1;
 		}
 
         return {
             hash    : hash,
-            /   : /,
+            index   : index,
             gallery : gallery
         };
     }
@@ -5048,7 +5048,7 @@
         if ( url.gallery !== '' ) {
 
 			// If we can find element matching 'data-fancybox' atribute, then trigger click event for that ..
-			$el = $( "[data-fancybox='" + $.escapeSelector( url.gallery ) + "']" ).eq( url./ - 1 );
+			$el = $( "[data-fancybox='" + $.escapeSelector( url.gallery ) + "']" ).eq( url.index - 1 );
 
             if ( !$el.length ) {
 				// .. if not, try finding element by ID
@@ -5090,16 +5090,16 @@
 			'onInit.fb' : function( e, instance ) {
 				var url, gallery;
 
-				if ( instance.group[ instance.curr/ ].opts.hash === false ) {
+				if ( instance.group[ instance.currIndex ].opts.hash === false ) {
 					return;
 				}
 
 				url     = parseUrl();
 				gallery = getGalleryID( instance );
 
-				// Make sure gallery start / matches / from hash
+				// Make sure gallery start index matches index from hash
 				if ( gallery && url.gallery && gallery == url.gallery ) {
-					instance.curr/ = url./ - 1;
+					instance.currIndex = url.index - 1;
 				}
 			},
 
@@ -5115,11 +5115,11 @@
 	            // Update window hash
 	            if ( gallery && gallery !== '' ) {
 
-					if ( window.location.hash./Of( gallery ) < 0 ) {
+					if ( window.location.hash.indexOf( gallery ) < 0 ) {
 		                instance.opts.origHash = window.location.hash;
 		            }
 
-					currentHash = gallery + ( instance.group.length > 1 ? '-' + ( current./ + 1 ) : '' );
+					currentHash = gallery + ( instance.group.length > 1 ? '-' + ( current.index + 1 ) : '' );
 
 					if ( 'replaceState' in window.history ) {
 						if ( timerID ) {
@@ -5180,7 +5180,7 @@
 			var url = parseUrl();
 
 			if ( $.fancybox.getInstance() ) {
-				if ( currentHash && currentHash !== url.gallery + '-' + url./ && !( url./ === 1 && currentHash == url.gallery ) ) {
+				if ( currentHash && currentHash !== url.gallery + '-' + url.index && !( url.index === 1 && currentHash == url.gallery ) ) {
 					currentHash = null;
 
 					$.fancybox.close();

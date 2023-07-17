@@ -737,7 +737,7 @@ a:focus, a:hover {
   left: 0;
   width: 100%;
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3);
-  z-/: 999;
+  z-index: 999;
   background: #fff;
   border: none;
   opacity: 0;
@@ -851,7 +851,7 @@ a:focus, a:hover {
   line-height: 50px;
   border-radius: 4px;
   text-align: center;
-  z-/: 999;
+  z-index: 999;
   right: 20px;
   bottom: 40px;
   opacity: 0;
@@ -879,7 +879,7 @@ a:focus, a:hover {
   transition: all 0.3s ease;
 }
 .button-go::before {
-  z-/: -1;
+  z-index: -1;
   background-color: #1e7650;
 }
 .button-go::after {
@@ -909,7 +909,7 @@ a:focus, a:hover {
   bottom: 0;
   right: 0;
   left: 0;
-  z-/: 99999999999;
+  z-index: 99999999999;
   display: block;
 }
 
@@ -936,7 +936,7 @@ a:focus, a:hover {
   top: 0;
   left: 0;
   border-radius: 3px;
-  z-/: 9999999999;
+  z-index: 9999999999;
 }
 
 @keyframes animate {
@@ -1067,7 +1067,7 @@ a:focus, a:hover {
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  z-/: 10;
+  z-index: 10;
 }
 .dropdown > a::after {
   font-family: "Font Awesome 5 Pro";
@@ -1126,7 +1126,7 @@ a:focus, a:hover {
 }
 .dropdown .country {
   position: absolute;
-  z-/: 99;
+  z-index: 99;
   margin-left: 13px;
   margin-top: 5px;
   color: #818089;

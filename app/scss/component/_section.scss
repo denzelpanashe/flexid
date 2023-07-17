@@ -307,13 +307,13 @@
     .images {
         padding-left: 57px;
         position: relative;
-        z-/: 0;
+        z-index: 0;
         animation: move3 8s infinite linear;
         .mark-img {
             position: absolute;
             top: -36px;
             right: 18px;
-            z-/: -1;
+            z-index: -1;
         }
     }
   
@@ -344,7 +344,7 @@
         padding: 60px 0 50px;
         background: url(./../../assets/images/section/bg-newsletter.jpg)  center center no-repeat;
         background-size: cover;
-        z-/: 2;
+        z-index: 2;
         .heading-section2 {
             padding: 0px 75px 0 66px;
             margin-bottom: 0px;
@@ -961,7 +961,7 @@
     .diagram {
         width: 245px;
         margin-right: 50px;
-        z-/: 3;
+        z-index: 3;
         .icon {
             width: 80px;
             height: 80px;
@@ -991,7 +991,7 @@
                 height: 100%;
                 background: #fff;
                 clip-path: polygon(50% 0%, 100% 5%, 100% 99%, 0 100%, 0 5%);
-                z-/: -1;
+                z-index: -1;
             }
             .sub-title {
                 letter-spacing: 2.8px;
@@ -1040,7 +1040,7 @@
                 @include flex-center;
                 font-size: 22px;
                 color: $color-1;
-                z-/: 1;
+                z-index: 1;
                 cursor: pointer;
             }
         }
@@ -1053,7 +1053,7 @@
         position: absolute;
         bottom: -87px;
         right: 76px;
-        z-/: -1;
+        z-index: -1;
     }
 }
 
@@ -1210,7 +1210,7 @@
                 border-radius: 12px;
                 padding: 15px 10px;
                 @include transition3;
-                z-/: 99;
+                z-index: 99;
                 h3 {
                     letter-spacing: -0.8px;
                     margin-bottom: 6px;
@@ -1343,7 +1343,7 @@
                 padding: 120px 0px 71px 100px;
                 margin-right: 0px;
                 position: relative;
-                z-/: 2;
+                z-index: 2;
             }
             .mark-img {
                 top: 16%;
@@ -1479,7 +1479,7 @@
                     width: 100%;
                     content: "";
                     height: 100%;
-                    z-/: 99;
+                    z-index: 99;
                 }
             }
             &.style {
@@ -1641,7 +1641,7 @@
         .mark-1 {
             left: 7.4%;
             top: 17.1%;
-            z-/: 1;
+            z-index: 1;
         }
         .mark-2 {
             right: 9%;
@@ -2135,7 +2135,7 @@
             img {
                 border-radius: 12px;
             }
-            z-/: 3;
+            z-index: 3;
         }
         .mark-img {
             top: 36px;
@@ -2146,25 +2146,25 @@
             left: 11px;
             box-shadow: -5px -5px 0 $color-1;
             border-radius: 50%;
-            z-/: 5;
+            z-index: 5;
             animation: move3 5s infinite linear;
         }
         .mark-2 {
             bottom: -55px;
             left: 0px;
-            z-/: 5;
+            z-index: 5;
             animation: move3 5s infinite linear;
         }
         .mark-3 {
             bottom: 134px;
             right: -3px;
-            z-/: 5;
+            z-index: 5;
             animation: move5 5s infinite linear;
         }
         .mark-4 {
             bottom: -93px;
             right: 16px;
-            z-/: 5;
+            z-index: 5;
             img {
                 border-radius: 50%;
             }
@@ -2172,7 +2172,7 @@
         .mark-5 {
             bottom: -24%;
             left: 24.5%;
-            z-/: 5;
+            z-index: 5;
             animation: move5 5s infinite linear;
         }
     }
@@ -3132,7 +3132,7 @@
         }
         .mark-contact {
             top: 0;
-            z-/: -1;
+            z-index: -1;
             left: -28px;
         }
     }

@@ -6,7 +6,7 @@ header {
 }
 
 .header_1 {
-  z-/: 100;
+  z-index: 100;
   height: 134px;
   position: absolute;
   width: 100%;
@@ -23,12 +23,12 @@ header {
   left: 19.4%;
   top: 46%;
   border: 1px solid #00234B;
-  z-/: 0;
+  z-index: 0;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
-  z-/: 999;
+  z-index: 999;
 }
 #site-header-inner .wrap-inner {
   position: relative;
@@ -41,7 +41,7 @@ header {
   height: 100%;
   width: 100%;
   left: 0;
-  z-/: -8;
+  z-index: -8;
   background: #120A21;
   left: 8px;
   bottom: -8px;
@@ -218,7 +218,7 @@ header {
 #main-nav > ul > li {
   float: left;
   padding: 21px 3px 25px 4.3px;
-  z-/: 9;
+  z-index: 9;
 }
 #main-nav > ul > li > a {
   position: relative;
@@ -263,7 +263,7 @@ header {
   background-color: white;
   border-radius: 6px;
   box-shadow: -2px 6px 23px rgba(139, 84, 255, 0.2);
-  z-/: 9999;
+  z-index: 9999;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: all 0.3s ease;
@@ -367,7 +367,7 @@ header {
   position: absolute;
   top: 100%;
   left: 0;
-  z-/: 999999;
+  z-index: 999999;
   background-color: #fff;
   box-shadow: 0px 3px 16px rgba(47, 83, 109, 0.12);
 }
@@ -671,7 +671,7 @@ header {
   right: 0;
   width: 100%;
   height: 100%;
-  z-/: 99999;
+  z-index: 99999;
   -webkit-transform: translateX(100%);
   -ms-transform: translateX(100%);
   transform: translateX(100%);
@@ -699,7 +699,7 @@ header {
   height: 100%;
   overflow-y: auto;
   background-color: #fff;
-  z-/: 999999;
+  z-index: 999999;
 }
 
 .side-menu__block-inner::-webkit-scrollbar {
@@ -722,7 +722,7 @@ header {
   visibility: hidden;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.6);
-  z-/: 99999;
+  z-index: 99999;
   -webkit-transform: translateX(0);
   -ms-transform: translateX(0);
   transform: translateX(0);
@@ -1280,14 +1280,14 @@ path.two {
 .flat-subscribe .images {
   padding-left: 57px;
   position: relative;
-  z-/: 0;
+  z-index: 0;
   animation: move3 8s infinite linear;
 }
 .flat-subscribe .images .mark-img {
   position: absolute;
   top: -36px;
   right: 18px;
-  z-/: -1;
+  z-index: -1;
 }
 .flat-subscribe .mark-1 {
   left: 79px;
@@ -1316,7 +1316,7 @@ path.two {
   padding: 60px 0 50px;
   background: url(./../../assets/images/section/bg-newsletter.jpg) center center no-repeat;
   background-size: cover;
-  z-/: 2;
+  z-index: 2;
 }
 .flat-subscribe.home .heading-section2 {
   padding: 0px 75px 0 66px;
@@ -1923,7 +1923,7 @@ path.two {
 .diagram-box .diagram {
   width: 245px;
   margin-right: 50px;
-  z-/: 3;
+  z-index: 3;
 }
 .diagram-box .diagram .icon {
   width: 80px;
@@ -1957,7 +1957,7 @@ path.two {
   height: 100%;
   background: #fff;
   clip-path: polygon(50% 0%, 100% 5%, 100% 99%, 0 100%, 0 5%);
-  z-/: -1;
+  z-index: -1;
 }
 .diagram-box .diagram .content .sub-title {
   letter-spacing: 2.8px;
@@ -2008,7 +2008,7 @@ path.two {
   justify-content: center;
   font-size: 22px;
   color: #fff;
-  z-/: 1;
+  z-index: 1;
   cursor: pointer;
 }
 .box-client ul:hover li {
@@ -2018,7 +2018,7 @@ path.two {
   position: absolute;
   bottom: -87px;
   right: 76px;
-  z-/: -1;
+  z-index: -1;
 }
 
 .flat-process2 .heading-section {
@@ -2169,7 +2169,7 @@ path.two {
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  z-/: 99;
+  z-index: 99;
 }
 .flat-projects .box .image-box .content h3 {
   letter-spacing: -0.8px;
@@ -2302,7 +2302,7 @@ path.two {
   padding: 120px 0px 71px 100px;
   margin-right: 0px;
   position: relative;
-  z-/: 2;
+  z-index: 2;
 }
 .flat-analytics .wrap-analytics .box-images .mark-img {
   top: 16%;
@@ -2439,7 +2439,7 @@ path.two {
   width: 100%;
   content: "";
   height: 100%;
-  z-/: 99;
+  z-index: 99;
 }
 .flat-testimonials .box-images .images.style {
   margin-top: 40px;
@@ -2596,7 +2596,7 @@ path.two {
 .flat-about2 .mark-img .mark-1 {
   left: 7.4%;
   top: 17.1%;
-  z-/: 1;
+  z-index: 1;
 }
 .flat-about2 .mark-img .mark-2 {
   right: 9%;
@@ -3135,7 +3135,7 @@ path.two {
   padding-left: 49px;
 }
 .flat-testimonials2 .box-images .images {
-  z-/: 3;
+  z-index: 3;
 }
 .flat-testimonials2 .box-images .images img {
   border-radius: 12px;
@@ -3149,25 +3149,25 @@ path.two {
   left: 11px;
   box-shadow: -5px -5px 0 #fff;
   border-radius: 50%;
-  z-/: 5;
+  z-index: 5;
   animation: move3 5s infinite linear;
 }
 .flat-testimonials2 .box-images .mark-2 {
   bottom: -55px;
   left: 0px;
-  z-/: 5;
+  z-index: 5;
   animation: move3 5s infinite linear;
 }
 .flat-testimonials2 .box-images .mark-3 {
   bottom: 134px;
   right: -3px;
-  z-/: 5;
+  z-index: 5;
   animation: move5 5s infinite linear;
 }
 .flat-testimonials2 .box-images .mark-4 {
   bottom: -93px;
   right: 16px;
-  z-/: 5;
+  z-index: 5;
 }
 .flat-testimonials2 .box-images .mark-4 img {
   border-radius: 50%;
@@ -3175,7 +3175,7 @@ path.two {
 .flat-testimonials2 .box-images .mark-5 {
   bottom: -24%;
   left: 24.5%;
-  z-/: 5;
+  z-index: 5;
   animation: move5 5s infinite linear;
 }
 .flat-testimonials2 .wrap-testi {
@@ -4073,7 +4073,7 @@ path.two {
   bottom: -11px;
   width: 100%;
   height: 100%;
-  z-/: -1;
+  z-index: -1;
 }
 .flat-skills2 .wrap-skill {
   padding: 14px 70px 0 64px;
@@ -4110,7 +4110,7 @@ path.two {
   bottom: -11px;
   width: 100%;
   height: 100%;
-  z-/: -1;
+  z-index: -1;
 }
 .flat-contact #comments .respond-comment {
   border: unset;
@@ -4170,7 +4170,7 @@ path.two {
 }
 .flat-contact-us .box-images .mark-contact {
   top: 0;
-  z-/: -1;
+  z-index: -1;
   left: -28px;
 }
 .flat-contact-us .box {
@@ -4897,17 +4897,17 @@ path.two {
   background: #1e7650;
   height: 0;
   width: 0;
-  z-/: 1;
+  z-index: 1;
   position: absolute;
   opacity: 0.6;
 }
 .hv-one .hover-one::after {
-  z-/: 3;
+  z-index: 3;
   bottom: 0;
   left: 0;
 }
 .hv-one .hover-one::before {
-  z-/: 3;
+  z-index: 3;
   right: 0;
   top: 0;
 }
@@ -4975,7 +4975,7 @@ path.two {
   height: 50px;
   border-radius: 5px;
   top: 24px;
-  z-/: 99;
+  z-index: 99;
   opacity: 1;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -5038,7 +5038,7 @@ path.two {
   border-radius: 50%;
   top: 14px;
   position: absolute;
-  z-/: 99;
+  z-index: 99;
   opacity: 1;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -5082,7 +5082,7 @@ path.two {
   border-radius: 50%;
   top: 45.7%;
   position: absolute;
-  z-/: 99;
+  z-index: 99;
   opacity: 0;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -5154,7 +5154,7 @@ path.two {
   font-weight: 500;
   position: absolute;
   bottom: 43px;
-  z-/: 99;
+  z-index: 99;
   color: #fff;
   text-transform: uppercase;
 }
@@ -5323,7 +5323,7 @@ path.two {
   top: -165px;
   margin-left: 90px;
   width: 100%;
-  z-/: -1;
+  z-index: -1;
 }
 .slider.home2 .swiper-pagination2 {
   bottom: 10.2%;
@@ -5386,7 +5386,7 @@ path.two {
   text-align: unset;
   left: 16%;
   bottom: 12%;
-  z-/: 2;
+  z-index: 2;
 }
 .slider .swiper-pagination-bullet {
   background: #00234B;
@@ -5424,7 +5424,7 @@ path.two {
 
 .pagi .swiper-pagination {
   position: relative;
-  z-/: 2;
+  z-index: 2;
   margin-top: 35px;
 }
 .pagi .swiper-pagination-bullet {
@@ -5464,7 +5464,7 @@ path.two {
 
 .pagi2 .swiper-pagination2 {
   position: relative;
-  z-/: 2;
+  z-index: 2;
   margin-top: 62px;
 }
 .pagi2 .swiper-pagination-bullet {
@@ -5520,7 +5520,7 @@ path.two {
 }
 .pagi3 .swiper-pagination3 {
   position: relative;
-  z-/: 2;
+  z-index: 2;
 }
 .pagi3 .swiper-pagination-bullet {
   width: 10px;
@@ -5939,7 +5939,7 @@ path.two {
   width: 100%;
   height: 100%;
   position: relative;
-  z-/: 1;
+  z-index: 1;
 }
 
 .noUi-origin {
@@ -5952,11 +5952,11 @@ path.two {
 
 .noUi-handle {
   position: relative;
-  z-/: 1;
+  z-index: 1;
 }
 
 .noUi-stacking .noUi-handle {
-  z-/: 10;
+  z-index: 10;
 }
 
 .noUi-state-tap .noUi-origin {
@@ -6061,4 +6061,4 @@ path.two {
   margin: 0 2px;
 }
 
-/*# sourceMappingURL=/.css.map */
+/*# sourceMappingURL=index.css.map */
