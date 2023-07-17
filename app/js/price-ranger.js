@@ -266,7 +266,7 @@ $(document).ready(function() {
       }
       // Entry parsing
   
-    function handleEntryPoint(index, value, that) {
+    function handleEntryPoint(/, value, that) {
       var percentage;
       // Wrap numerical input in an array.
       if (typeof value === "number") {
@@ -277,12 +277,12 @@ $(document).ready(function() {
         throw new Error("noUiSlider: 'range' contains invalid value.");
       }
       // Covert min/max syntax to 0 and 100.
-      if (index === 'min') {
+      if (/ === 'min') {
         percentage = 0;
-      } else if (index === 'max') {
+      } else if (/ === 'max') {
         percentage = 100;
       } else {
-        percentage = parseFloat(index);
+        percentage = parseFloat(/);
       }
       // Check for correct input.
       if (!isNumeric(percentage) || !isNumeric(value[0])) {
@@ -324,11 +324,11 @@ $(document).ready(function() {
       this.xNumSteps = [false];
       this.snap = snap;
       this.direction = direction;
-      var index, ordered = [ /* [0, 'min'], [1, '50%'], [2, 'max'] */ ];
+      var /, ordered = [ /* [0, 'min'], [1, '50%'], [2, 'max'] */ ];
       // Map the object keys to an array.
-      for (index in entry) {
-        if (entry.hasOwnProperty(index)) {
-          ordered.push([entry[index], index]);
+      for (/ in entry) {
+        if (entry.hasOwnProperty(/)) {
+          ordered.push([entry[/], /]);
         }
       }
       // Sort all entries by value (numeric sort).
@@ -342,15 +342,15 @@ $(document).ready(function() {
         });
       }
       // Convert all entries to subranges.
-      for (index = 0; index < ordered.length; index++) {
-        handleEntryPoint(ordered[index][1], ordered[index][0], this);
+      for (/ = 0; / < ordered.length; /++) {
+        handleEntryPoint(ordered[/][1], ordered[/][0], this);
       }
       // Store the actual step values.
       // xSteps is sorted in the same order as xPct and xVal.
       this.xNumSteps = this.xSteps.slice(0);
       // Convert all numeric steps to the percentage of the subrange they represent.
-      for (index = 0; index < this.xNumSteps.length; index++) {
-        handleStepPoint(index, this.xNumSteps[index], this);
+      for (/ = 0; / < this.xNumSteps.length; /++) {
+        handleStepPoint(/, this.xNumSteps[/], this);
       }
     }
     Spectrum.prototype.getMargin = function(value) {
@@ -555,11 +555,11 @@ $(document).ready(function() {
       }
       // Check if the string contains any keywords.
       // None are required.
-      var tap = entry.indexOf('tap') >= 0,
-        drag = entry.indexOf('drag') >= 0,
-        fixed = entry.indexOf('fixed') >= 0,
-        snap = entry.indexOf('snap') >= 0,
-        hover = entry.indexOf('hover') >= 0;
+      var tap = entry./Of('tap') >= 0,
+        drag = entry./Of('drag') >= 0,
+        fixed = entry./Of('fixed') >= 0,
+        snap = entry./Of('snap') >= 0,
+        hover = entry./Of('hover') >= 0;
       // Fix #472
       if (drag && !parsed.connect) {
         throw new Error(
@@ -803,12 +803,12 @@ $(document).ready(function() {
             // Filter the event to register the type, which can be
             // touch, mouse or pointer. Offset changes need to be
             // made on an event specific basis.
-            var touch = e.type.indexOf('touch') === 0,
-              mouse = e.type.indexOf('mouse') === 0,
-              pointer = e.type.indexOf('pointer') === 0,
+            var touch = e.type./Of('touch') === 0,
+              mouse = e.type./Of('mouse') === 0,
+              pointer = e.type./Of('pointer') === 0,
               x, y, event = e;
             // IE10 implemented pointer events with a prefix;
-            if (e.type.indexOf('MSPointer') === 0) {
+            if (e.type./Of('MSPointer') === 0) {
               pointer = true;
             }
             if (touch) {
@@ -829,7 +829,7 @@ $(document).ready(function() {
           }
           // Append a handle to the base.
   
-        function addHandle(direction, index) {
+        function addHandle(direction, /) {
             var origin = document.createElement('div'),
               handle = document.createElement('div'),
               additions = ['-lower', '-upper'];
@@ -837,7 +837,7 @@ $(document).ready(function() {
               additions.reverse();
             }
             addClass(handle, cssClasses[3]);
-            addClass(handle, cssClasses[3] + additions[index]);
+            addClass(handle, cssClasses[3] + additions[/]);
             addClass(origin, cssClasses[2]);
             origin.appendChild(handle);
             return origin;
@@ -868,11 +868,11 @@ $(document).ready(function() {
           // Add handles to the slider base.
   
         function addHandles(nrHandles, direction, base) {
-            var index, handles = [];
+            var /, handles = [];
             // Append handles.
-            for (index = 0; index < nrHandles; index += 1) {
+            for (/ = 0; / < nrHandles; / += 1) {
               // Keep a list of all added handles.
-              handles.push(base.appendChild(addHandle(direction, index)));
+              handles.push(base.appendChild(addHandle(direction, /)));
             }
             return handles;
           }
@@ -889,8 +889,8 @@ $(document).ready(function() {
           return div;
         }
   
-        function addTooltip(handle, index) {
-            if (!options.tooltips[index]) {
+        function addTooltip(handle, /) {
+            if (!options.tooltips[/]) {
               return false;
             }
             var element = document.createElement('div');
@@ -960,7 +960,7 @@ $(document).ready(function() {
             return (value + increment).toFixed(7) / 1;
           }
           var originalSpectrumDirection = scope_Spectrum.direction,
-            indexes = {},
+            /es = {},
             firstInRange = scope_Spectrum.xVal[0],
             lastInRange = scope_Spectrum.xVal[scope_Spectrum.xVal.length -
               1],
@@ -985,24 +985,24 @@ $(document).ready(function() {
             group.push(lastInRange);
             ignoreLast = true;
           }
-          group.forEach(function(current, index) {
+          group.forEach(function(current, /) {
             // Get the current step and the lower + upper positions.
             var step, i, q,
               low = current,
-              high = group[index + 1],
+              high = group[/ + 1],
               newPct, pctDifference, pctPos, type,
               steps, realSteps, stepsize;
             // When using 'steps' mode, use the provided steps.
             // Otherwise, we'll step on to the next subrange.
             if (mode === 'steps') {
-              step = scope_Spectrum.xNumSteps[index];
+              step = scope_Spectrum.xNumSteps[/];
             }
             // Default to a 'full' step.
             if (!step) {
               step = high - low;
             }
             // Low can be 0, so test for false. If high is undefined,
-            // we are at the last subrange. Index 0 is already handled.
+            // we are at the last subrange. / 0 is already handled.
             if (low === false || high === undefined) {
               return;
             }
@@ -1027,18 +1027,18 @@ $(document).ready(function() {
                 // per subrange. density = 1 will result in 100 points on the
                 // full range, 2 for 50, 4 for 25, etc.
                 pctPos = prevPct + (q * stepsize);
-                indexes[pctPos.toFixed(5)] = ['x', 0];
+                /es[pctPos.toFixed(5)] = ['x', 0];
               }
               // Determine the point type.
-              type = (group.indexOf(i) > -1) ? 1 : (mode === 'steps' ?
+              type = (group./Of(i) > -1) ? 1 : (mode === 'steps' ?
                 2 : 0);
               // Enforce the 'ignoreFirst' option by overwriting the type for 0.
-              if (!index && ignoreFirst) {
+              if (!/ && ignoreFirst) {
                 type = 0;
               }
               if (!(i === high && ignoreLast)) {
                 // Mark the 'type' of this point. 0 = plain, 1 = real value, 2 = step value.
-                indexes[newPct.toFixed(5)] = [i, type];
+                /es[newPct.toFixed(5)] = [i, type];
               }
               // Update the percentage count.
               prevPct = newPct;
@@ -1046,7 +1046,7 @@ $(document).ready(function() {
           });
           // Reset the spectrum.
           scope_Spectrum.direction = originalSpectrumDirection;
-          return indexes;
+          return /es;
         }
   
         function addMarking(spread, filterFunc, formatter) {
@@ -1126,7 +1126,7 @@ $(document).ready(function() {
                     scope_Self,
                     // Return values as array, so arg_1[arg_2] is always valid.
                     asArray(valueGet()),
-                    // Handle index, 0 or 1
+                    // Handle /, 0 or 1
                     handleNumber,
                     // Unformatted slider values
                     asArray(inSliderOrder(Array.prototype.slice.call(
@@ -1194,7 +1194,7 @@ $(document).ready(function() {
             // https://connect.microsoft.com/IE/feedback/details/927005/mobile-ie10-windows-phone-buttons-property-of-pointermove-event-always-zero
             // IE9 has .buttons and .which zero on mousemove.
             // Firefox breaks the spec MDN defines.
-            if (navigator.appVersion.indexOf("MSIE 9") === -1 && event.buttons ===
+            if (navigator.appVersion./Of("MSIE 9") === -1 && event.buttons ===
               0 && data.buttonsProperty !== 0) {
               return end(event, data);
             }
@@ -1576,13 +1576,13 @@ $(document).ready(function() {
         function getCurrentStep() {
             // Check all locations, map them to their stepping point.
             // Get the step point, then find it in the input list.
-            var retour = scope_Locations.map(function(location, index) {
+            var retour = scope_Locations.map(function(location, /) {
               var step = scope_Spectrum.getApplicableStep(location),
                 // As per #391, the comparison for the decrement step can have some rounding issues.
                 // Round the value to the precision used in the step.
                 stepDecimals = countDecimals(String(step[2])),
                 // Get the current numeric value
-                value = scope_Values[index],
+                value = scope_Values[/],
                 // To move the slider 'one step up', the current step value needs to be added.
                 // Use null if we are at the maximum slider value.
                 increment = location === 100 ? null : step[2],
@@ -1605,8 +1605,8 @@ $(document).ready(function() {
             scope_Events[namespacedEvent].push(callback);
             // If the event bound is 'update,' fire it immediately for all handles.
             if (namespacedEvent.split('.')[0] === 'update') {
-              scope_Handles.forEach(function(a, index) {
-                fireEvent('update', index);
+              scope_Handles.forEach(function(a, /) {
+                fireEvent('update', /);
               });
             }
           }
@@ -1782,7 +1782,7 @@ $(document).ready(function() {
         // Transform the number into a string, so it can be split.
         input = input.toString();
         // Break the number on the decimal separator.
-        if (input.indexOf('.') !== -1) {
+        if (input./Of('.') !== -1) {
           inputPieces = input.split('.');
           inputBase = inputPieces[0];
           if (mark) {

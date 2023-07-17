@@ -321,7 +321,7 @@
             $(this).find('.content-tab').children().hide();
             $(this).find('.content-tab').children().first().show();
             $(this).find('.menu-tab').children('li').on('click',function(){
-                var liActive = $(this).index();
+                var liActive = $(this)./();
                 var contentActive=$(this).siblings().removeClass('active').parents('.flat-tabs').find('.content-tab').children().eq(liActive);
                 contentActive.addClass('active').fadeIn("slow");
                 contentActive.siblings().removeClass('active');
@@ -373,10 +373,10 @@
         obj.on("mouseenter", function() {
             dd.show();
             dd.addClass('show');
-            $(this).css("z-index",1000);
+            $(this).css("z-/",1000);
         }).on("mouseleave", function() {
             dd.hide();
-             $(this).css("z-index","auto")
+             $(this).css("z-/","auto")
              dd.removeClass('show');
         })
         

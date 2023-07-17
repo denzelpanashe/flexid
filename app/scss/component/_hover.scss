@@ -64,18 +64,18 @@
         background: $color-3;
         height: 0;
         width: 0;
-        z-index: 1;
+        z-/: 1;
         position: absolute;
         opacity: .6;
     }
     .hover-one {
         &::after {
-            z-index: 3;
+            z-/: 3;
             bottom: 0;
             left: 0;
         }
         &::before {
-            z-index: 3;
+            z-/: 3;
             right: 0;
             top: 0;
         }
