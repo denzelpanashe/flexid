@@ -26,15 +26,28 @@
                 display: block;
             }
             
-            .flat-pricing .col-lg-3 {
+            .flat-pricing .swiper-container {
                 width: 100%;
+                overflow-x: hidden;
+                overflow-y: visible;
+            }
+            
+            .flat-pricing .swiper-wrapper {
+                display: block;
+                white-space: nowrap;
+            }
+            
+            .flat-pricing .swiper-slide {
+                display: inline-block;
+                vertical-align: top;
+                width: calc(100% - 20px);
+                margin: 10px;
             }
             
             .flat-pricing .box {
-                margin: 10px;
-                width: calc(100% - 20px);
+                width: 100%;
             }
-        }  
+        } 
     </style>
 
 </head>
