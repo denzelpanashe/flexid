@@ -21,9 +21,44 @@
     <link rel="apple-touch-icon-precomposed" href="assets/images/logo/favicon.io">
 
     <style>
-        #proctoring {
-                margin: 0px auto 100px auto;
+        /*#proctoring {
+                margin: 0px auto 90px 40px;
+        }*/
+
+        /* Desktop styles */
+        @media (min-width: 768px) {
+            #proctoring {
+                margin: 0px auto 40px auto;
+                text-align: center;
+            }
+            
+            #proctoring .content {
+                display: flex;
+                justify-content: center;
+            }
         }
+        /* Mobile styles */
+        @media only screen and (max-width: 767px) {
+        #proctoring .images img {
+            max-width: 100%;
+        }
+        
+        #proctoring .content {
+            text-align: center;
+        }
+        
+        #proctoring .icon-button {
+            margin-top: 10px;
+        }
+        
+        #proctoring {
+            margin: 0;
+            width: calc(100% - 40px);
+            margin-left: 40px;
+            margin-bottom: 90px;
+        }
+        }
+
     </style>
 
 </head>
