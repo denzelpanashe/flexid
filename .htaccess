@@ -1,4 +1,12 @@
 RewriteEngine On
+
+# Redirect HTTP to HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Remove file extension from URLs
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+# Add trailing slash to URLs without an extension
 RewriteRule ^([^\.]+)$ $1/ [NC,L]
